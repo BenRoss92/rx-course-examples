@@ -1,4 +1,4 @@
-import './'
+import './from-of';
 
 document.addEventListener('DOMContentLoaded', function() {
     
