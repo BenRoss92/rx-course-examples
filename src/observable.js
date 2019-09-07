@@ -1,4 +1,5 @@
 import { add } from "./helpers"
+import { Observable } from 'rxjs';
 
 /**
  * Task:
@@ -13,21 +14,6 @@ const observer = {
     error: (err) => add.li(err),
     complete: () => add.li("Ben's observable has completed!"),
 };
-
-class Observable {
-    constructor(subscribeTo) {
-        // takes in a function as a parameter. This function will take its own parameter - the observer to call next/complete on
-        this.subscribeTo = subscribeTo;
-        
-    }
-
-    // can take in an object as a parameter. This object will be the observer
-    subscribe(observer) {
-        // subscribe doesn't return anything - returns undefined. Just calls the function passed into the constructor, which also returns undefined.
-        return this.subscribeTo(observer);
-        
-    }
-}
 
 // producer = an observable that produces values
 const producer = new Observable((subscribe) => {
