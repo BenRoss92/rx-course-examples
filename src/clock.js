@@ -10,18 +10,23 @@ import { map } from "rxjs/operators";
  */
 const clock = new Clock("chart");
 
-// const seconds = buildArray(60);
-// const secondMarks = from(seconds);
+/**
+ * Task:
+ * 
+ * Create the hour and second marks on the clock face
+ */
 
+// create the second lines on the clock face
+const secondMarks$ = range(1, 60)
+  .subscribe((tickMark) => {
+    add.line(tickMark, 'seconds');
+  });
 
-
-
-
-// const hours = buildArray(12);
-// const hourMarks = of(...hours);
-
-
-
+// create the hour lines on the clock face
+const hourMarks$ = range(1, 12)
+  .subscribe((tickMark) => {
+    add.line(tickMark, 'hours');
+  });
 
 const timeTick$ = interval(1000).pipe(
   map(() => {
