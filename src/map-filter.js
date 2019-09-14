@@ -16,16 +16,12 @@ import { take, filter, map } from "rxjs/operators";
 
 const words = ['zero', 'one', 'two', 'three', 'four'];
  
-const count$ = interval(1000)
-    .pipe(
-        take(4),
-    );
- 
+const count$ = interval(1000);
+
 count$
     .pipe(
-        filter(number => number % 2 === 0)
-    )
-    .pipe(
+        take(4),
+        filter(number => number % 2 === 0),
         map((number) => words[number])
     )
     .subscribe((count) => {
